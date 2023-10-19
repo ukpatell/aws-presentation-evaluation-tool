@@ -1,37 +1,15 @@
 {
   "api": {
-    "restApi": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "getCreds"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
-    "wellpresentedtool": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "wellpresentedtoolcd58577ccd58577c"
-        }
-      ],
+    "awspresentationevalu": {
+      "dependsOn": [],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authwellpresentedtoolcd58577ccd58577c"
-            }
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },
@@ -40,7 +18,7 @@
     }
   },
   "auth": {
-    "wellpresentedtoolcd58577ccd58577c": {
+    "awspresentationevalu479b157b": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -56,9 +34,7 @@
           "EMAIL"
         ],
         "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
@@ -67,33 +43,27 @@
       "service": "Cognito"
     }
   },
-  "function": {
-    "getCreds": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
   "hosting": {
-    "S3AndCloudFront": {
+    "amplifyhosting": {
       "providerPlugin": "awscloudformation",
-      "service": "S3AndCloudFront"
+      "service": "amplifyhosting",
+      "type": "manual"
     }
   },
   "parameters": {
-    "AMPLIFY_function_getCreds_deploymentBucketName": {
+    "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {
-          "category": "function",
-          "resourceName": "getCreds"
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
         }
       ]
     },
-    "AMPLIFY_function_getCreds_s3Key": {
+    "AMPLIFY_hosting_amplifyhosting_type": {
       "usedBy": [
         {
-          "category": "function",
-          "resourceName": "getCreds"
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
         }
       ]
     }

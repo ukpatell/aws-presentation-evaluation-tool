@@ -4,7 +4,7 @@
 import React, { Component } from "react";
 import { renderToString } from "react-dom/server";
 import { Auth } from "aws-amplify";
-import { Container, Form } from "semantic-ui-react";
+import { Container, Form, Message } from "semantic-ui-react";
 import ContentEditable from "react-contenteditable";
 import "./Home.css";
 import Webcam from "react-webcam";
@@ -790,9 +790,8 @@ class HomeScreen extends Component {
           items={[
             {
               type: "success",
-              content: `Eye detection model loaded. Please click on the blue button below the webcam ${
-                11 - this.state.clicks
-              } times. You may start your presentation once finished.`,
+              content: `Eye detection model loaded. Please click on the blue button below the webcam ${11 - this.state.clicks
+                } times. You may start your presentation once finished.`,
               id: "message_2",
             },
           ]}
@@ -1035,15 +1034,33 @@ class HomeScreen extends Component {
           </Container>
         </div>
         <div
+          
+        >
+          <div
+          style={{
+            display: "flex",
+            justifyContent: "left",
+          }}
+          >
+            <Message>
+              <Message.Header>Gen AI Customer</Message.Header>
+              <p>
+                We have heard the AWS cloud is more expensive than an on premises environment. Is this true?
+              </p>
+            </Message>
+          </div>
+          <div
           style={{
             paddingTop: "1em",
             display: "flex",
             justifyContent: "center",
           }}
-        >
-          <h3>
-            <Icon name="status-pending"></Icon> Presentation Time
-          </h3>
+          >
+            <h3>
+              <Icon name="status-pending"></Icon> Presentation Time
+            </h3>
+          </div>
+
         </div>
         <div
           style={{
